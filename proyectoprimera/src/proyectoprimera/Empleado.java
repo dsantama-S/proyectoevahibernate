@@ -8,8 +8,18 @@ public class Empleado {
 	private String departamento;
 	private double ventamensual;
 	private double totalgastos;
+	private String fechames;
 	
-	
+	public void GenerarDato(String mes,String periodo) {
+		int primer = fechames.indexOf("-");
+		int segundo= fechames.lastIndexOf("-");
+		String fechamesp = fechames.substring(0, primer);
+		String fechamesm = fechames.substring(primer+1, segundo);
+		if(periodo.equalsIgnoreCase(fechamesp) && mes.equalsIgnoreCase(fechamesm)) {
+		System.out.println("Empleado [matricula=" + matricula + ", apenom=" + apenom + ", departamento=" + departamento
+				+ ", ventamensual=" + ventamensual +",gastos totales=" + totalgastos + ", fecha=" + fechames+ "]");
+		}
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(matricula);
@@ -25,10 +35,16 @@ public class Empleado {
 		Empleado other = (Empleado) obj;
 		return Objects.equals(matricula, other.matricula);
 	}
+	public String getFechames() {
+		return fechames;
+	}
+	public void setFechames(String fechames) {
+		this.fechames = fechames;
+	}
 	@Override
 	public String toString() {
 		return "Empleado [matricula=" + matricula + ", apenom=" + apenom + ", departamento=" + departamento
-				+ ", ventamensual=" + ventamensual +",gastos totales" + totalgastos+ "]";
+				+ ", ventamensual=" + ventamensual +",gastos totales=" + totalgastos+ ", fecha=" + fechames+ "]";
 	}
 	public double getTotalgastos() {
 		return totalgastos;
